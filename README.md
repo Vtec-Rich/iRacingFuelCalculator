@@ -25,3 +25,5 @@ Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protrac
 - use grid css instead of bootstrap 
 - add more tests
 - Add in more detail around pit strategy.
+
+See a demo here - http://xvr-sim-racing.co.uk/xvr-fuel-calc/
