@@ -11,7 +11,7 @@ export class LapComponent implements OnInit {
   fullFuelStops: number;
   partialFuelStopAmount: number;
   tankLaps: string;
-  show: boolean;
+  show: boolean = false;
 
   constructor() { }
 

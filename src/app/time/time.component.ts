@@ -12,7 +12,7 @@ export class TimeComponent implements OnInit {
   fuelReq: string;
   fullFuelStops: number;
   partialFuelStopAmount: number;
-  show: boolean;
+  show: boolean = false;
 
   constructor() { }
 
@@ -34,7 +34,7 @@ export class TimeComponent implements OnInit {
     /********
     * No of laps in race
     ********/
-	this.lapAmount = raceSeconds / totalSeconds;
+	  this.lapAmount = raceSeconds / totalSeconds;
     this.lapAmount = Math.ceil(this.lapAmount);
 
 	/********
