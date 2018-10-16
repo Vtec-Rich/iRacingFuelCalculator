@@ -1,1 +1,101 @@
-/* You can add global styles to this file, and also import other style files */
+
+@import url('https://fonts.googleapis.com/css?family=Raleway:500');
+@import url('https://fonts.googleapis.com/css?family=Montserrat');
+
+*, 
+html, 
+body {
+	font-family: 'Raleway', Arial, sans-serif;
+}
+
+body {
+	background-image: url('/assets/background-updated-2-min.png');
+	background-position: center center;
+}
+
+header {
+	max-width: 1140px;
+	width:100%;
+	margin:0 auto;
+	text-align:center;
+	margin-top:25px;
+	margin-bottom:25px;
+	border-top:3px solid #FFF;
+	border-bottom:3px solid #FFF;
+
+	h1 {
+		font-family: 'Montserrat', Arial, sans-serif;
+		color:#FFF;
+		text-shadow: 2px 2px 0 #333;
+		text-transform: uppercase;
+	}
+
+	h2 {
+		font-family: 'Montserrat', Arial, sans-serif;
+		color:#FFF;
+		text-shadow: 2px 2px 0 #333;
+	}
+
+}
+
+fieldset {
+	border:none;
+}
+
+.jumbotron {
+	/*background: rgba(255, 255, 255, 0.75);*/
+	background: rgba(49, 49, 49, 0.75);
+	padding: 2rem;
+}
+
+.lapComponent, .timeComponent {
+	h3, p, label, small {
+		color:#FFF !important;
+	}
+}
+
+.alert-dark {
+	background: rgba(49, 49, 49, 0.75);
+	border:1px solid #333;
+
+	p {
+		color:#FFF !important;
+	}
+}
+
+.alert {
+	p {
+		padding:0;
+		margin:0;
+	}
+
+	a {
+		margin-right:25px;
+		margin-top:15px;
+	}
+}
+
+footer {
+	position: relative;
+	margin-bottom:15px;
+
+	.logo {
+		width: 100%;
+    	text-align: center;
+	}
+
+}
+
+#results {
+	h2 {
+		color:#FFF;
+	}
+
+	p {
+		strong {
+			font-weight: bold;
+	    	font-size: 1.8rem;
+	    	padding: 0 10px;
+		}
+	}
+}

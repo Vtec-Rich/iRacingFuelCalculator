@@ -1,0 +1,99 @@
+<div class="jumbotron timeComponent">
+
+	<h3>Timed Races</h3>
+
+	<form #raceCalcForm="ngForm" (ngSubmit)="CalculateFuel(raceCalcForm.form); show = !show">
+		<fieldset>
+
+			<div class="row">
+    			<div class="col-sm">
+
+    				<div class="form-group">
+						<!-- Race time -->
+						<label for="raceTime">Race time</label>
+						<input type="number" name="raceTime" title="Enter race time in minutes" placeholder="Enter race time in minutes" tabindex="1" class="form-control" aria-describedby="raceTimeHelp" ngModel #raceTime="ngModel" required>
+						<small id="raceTimeHelp" class="form-text text-muted">Enter race time in minutes</small>
+						<div *ngIf="raceTime.touched && raceTime.errors">
+							<div class="alert alert-danger" 
+							     *ngIf="raceTime.errors.required">
+							     Enter race time in minutes
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<!-- max fuel -->
+						<label for="maxFuel">Maximum Fuel</label>
+						<input type="number" name="maxFuel" title="Enter maximum fuel tank capacity" placeholder="Enter maximum fuel tank capacity" tabindex="2" class="form-control" aria-describedby="maxFuelHelp" ngModel #maxFuel="ngModel" required>
+						<small id="maxFuelHelp" class="form-text text-muted">Enter maximum fuel tank capacity</small>
+						<div *ngIf="maxFuel.touched && maxFuel.errors">
+							<div class="alert alert-danger" 
+							     *ngIf="maxFuel.errors.required">
+							     Enter maximum fuel tank capacity
+							</div>
+						</div>
+					</div>
+
+				</div>
+
+    			<div class="col-sm">
+
+    				<div class="form-group">
+						<!-- LAP TIME -->
+						<label for="lapTime">Lap Time in format: 1:42.105</label>
+						<input type="text" name="lapTime" title="MM:SS.000" placeholder="MM:SS.000" tabindex="3" class="form-control" aria-describedby="lapTimeHelp" ngModel #lapTime="ngModel" required pattern="([0-9]{1,2}):([0-9]{2}.([0-9]{1,3}))">
+						<small id="lapTimeHelp" class="form-text text-muted">Enter laptime in minutes, seconds, millisceonds in format MM:SS.000, e.g. 1:42.105</small>
+						<div *ngIf="lapTime.touched && lapTime.errors">
+							<div class="alert alert-danger" 
+							     *ngIf="lapTime.errors.required">
+							     Enter laptime in format MM:SS.000, e.g. 1:42.105
+							</div>
+						</div>
+					</div>
+
+					<div class="form-group">
+						<!-- fuel usage -->
+						<label for="fuelUse">Fuel usage per lap</label>
+						<input type="number" name="fuelUsage" title="Enter fuel usage per lap" placeholder="Enter fuel usage per lap" tabindex="4" class="form-control" aria-describedby="fuelUsageHelp" ngModel #fuelUsage="ngModel" required>
+						<small id="fuelUsageHelp" class="form-text text-muted">Enter fuel usage per lap</small>
+						<div *ngIf="fuelUsage.touched && fuelUsage.errors">
+							<div class="alert alert-danger" 
+							     *ngIf="fuelUsage.errors.required">
+							     Enter fuel usage per lap
+							</div>
+						</div>
+					</div>
+
+				</div>
+			</div>
+
+			<!-- submit -->
+			<button class="btn btn-light" [disabled]="!raceCalcForm.valid">Calculate!</button>
+
+		</fieldset>
+
+	</form>
+
+</div>
+
+<div id="results" *ngIf="show" class="jumbotron">
+	<h2>Results:</h2>
+
+	<div class="alert alert-success" role="alert">
+		<p>Total number of laps for your race: <strong>{{lapAmount}}</strong></p>
+	</div>
+	<div class="alert alert-success" role="alert">
+		<p>One tank of fuel will last <strong>{{tankLaps}}</strong> laps</p>
+	</div>
+	<div class="alert alert-success" role="alert">
+		<p>For a race of <strong>{{lapAmount}}</strong> laps you will need <strong>{{fuelReq}}</strong> units of fuel</p>
+	</div>
+	<div *ngIf="fullFuelStops > 0" class="alert alert-success" role="alert">
+		<p>You will require <strong>{{fullFuelStops}}</strong> stop(s) taking full fuel and 1 final pitstop taking <strong>{{partialFuelStopAmount}}</strong> units of fuel.</p>
+	</div>
+
+	<div class="alert alert-danger" role="alert">
+		<p>Please note this tool does not take into account any parade laps, formation laps or laps under yellow. It's also worth noting in iRacing most cars will start to 'cough' and 'splutter' when the fuel reaches 0.2 or 0.1 units so make any allowances for this. We would suggest adding an extra lap worth of fuel to ensure you make it to the finish.</p>
+	</div>
+
+</div>
