@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class LapComponent implements OnInit {
 
+  lapAmount: number;
   fuelReq: string;
   fullFuelStops: number;
   partialFuelStopAmount: number;
@@ -31,23 +32,25 @@ export class LapComponent implements OnInit {
     fuelReqNR = form.value.raceLaps * form.value.fuelUsage;
     this.fuelReq = fuelReqNR.toFixed(1);
 
-	/********
+	  /********
     * how many laps 1 tank will get you
     ********/
-    tankLapsNR = Math.round(form.value.maxFuel / form.value.fuelUsage);
+    tankLapsNR = form.value.maxFuel / form.value.fuelUsage;
     this.tankLaps = tankLapsNR.toFixed(1);
 
     /********
     * pit stops
     ********/
-    pitStopAmount = form.value.raceLaps / tankLapsNR;
-    remainder = pitStopAmount - Math.floor(pitStopAmount);
+    this.lapAmount = form.value.raceLaps;
 
+    pitStopAmount = this.lapAmount / tankLapsNR;
+    remainder = pitStopAmount - Math.floor(pitStopAmount);
     partialPitStop = remainder / 1 * 100;
     partialPitStop = partialPitStop / 100 * form.value.maxFuel;
     partialPitStop = Math.round(partialPitStop * 100) / 100;
 
-    this.fullFuelStops = Math.floor(pitStopAmount);
+    this.fullFuelStops = Math.floor(pitStopAmount) - 1;
+
     this.partialFuelStopAmount = partialPitStop;
 
     form.reset();

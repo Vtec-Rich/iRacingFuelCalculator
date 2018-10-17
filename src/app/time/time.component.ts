@@ -37,7 +37,7 @@ export class TimeComponent implements OnInit {
 	  this.lapAmount = raceSeconds / totalSeconds;
     this.lapAmount = Math.ceil(this.lapAmount);
 
-	/********
+	  /********
     * how many laps 1 tank will get you
     ********/
     tankLapsNR = form.value.maxFuel / form.value.fuelUsage;
@@ -57,7 +57,9 @@ export class TimeComponent implements OnInit {
     partialPitStop = remainder / 1 * 100;
     partialPitStop = partialPitStop / 100 * form.value.maxFuel;
     partialPitStop = Math.round(partialPitStop * 100) / 100;
-    this.fullFuelStops = Math.floor(pitStopAmount);
+
+    this.fullFuelStops = Math.floor(pitStopAmount) - 1;
+
     this.partialFuelStopAmount = partialPitStop;
 
     form.reset();

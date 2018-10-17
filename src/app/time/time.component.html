@@ -25,11 +25,11 @@
 						<!-- max fuel -->
 						<label for="maxFuel">Maximum Fuel</label>
 						<input type="number" name="maxFuel" title="Enter maximum fuel tank capacity" placeholder="Enter maximum fuel tank capacity" tabindex="2" class="form-control" aria-describedby="maxFuelHelp" ngModel #maxFuel="ngModel" required>
-						<small id="maxFuelHelp" class="form-text text-muted">Enter maximum fuel tank capacity</small>
+						<small id="maxFuelHelp" class="form-text text-muted">Enter maximum fuel tank capacity in units, e.g. for 14.3 gallons just enter 14.3</small>
 						<div *ngIf="maxFuel.touched && maxFuel.errors">
 							<div class="alert alert-danger" 
 							     *ngIf="maxFuel.errors.required">
-							     Enter maximum fuel tank capacity
+							     Enter maximum fuel tank capacity in units, e.g. for 14.3 gallons just enter 14.3
 							</div>
 						</div>
 					</div>
@@ -55,11 +55,11 @@
 						<!-- fuel usage -->
 						<label for="fuelUse">Fuel usage per lap</label>
 						<input type="number" name="fuelUsage" title="Enter fuel usage per lap" placeholder="Enter fuel usage per lap" tabindex="4" class="form-control" aria-describedby="fuelUsageHelp" ngModel #fuelUsage="ngModel" required>
-						<small id="fuelUsageHelp" class="form-text text-muted">Enter fuel usage per lap</small>
+						<small id="fuelUsageHelp" class="form-text text-muted">Enter fuel usage per lap in any unit, e.g. for 0.5 gallons just enter 0.5</small>
 						<div *ngIf="fuelUsage.touched && fuelUsage.errors">
 							<div class="alert alert-danger" 
 							     *ngIf="fuelUsage.errors.required">
-							     Enter fuel usage per lap
+							     Enter fuel usage per lap in any unit, e.g. for 0.5 gallons just enter 0.5
 							</div>
 						</div>
 					</div>
@@ -80,16 +80,27 @@
 	<h2>Results:</h2>
 
 	<div class="alert alert-success" role="alert">
-		<p>Total number of laps for your race: <strong>{{lapAmount}}</strong></p>
+		<p>Total number of laps for your race: <strong>{{lapAmount}}</strong>.</p>
 	</div>
+
 	<div class="alert alert-success" role="alert">
-		<p>One tank of fuel will last <strong>{{tankLaps}}</strong> laps</p>
+		<p>One tank of fuel will last <strong>{{tankLaps}}</strong> laps.</p>
 	</div>
+	
 	<div class="alert alert-success" role="alert">
-		<p>For a race of <strong>{{lapAmount}}</strong> laps you will need <strong>{{fuelReq}}</strong> units of fuel</p>
+		<p>For a race of <strong>{{lapAmount}}</strong> laps you will need <strong>{{fuelReq}}</strong> units of fuel.</p>
 	</div>
+
 	<div *ngIf="fullFuelStops > 0" class="alert alert-success" role="alert">
-		<p>You will require <strong>{{fullFuelStops}}</strong> stop(s) taking full fuel and 1 final pitstop taking <strong>{{partialFuelStopAmount}}</strong> units of fuel.</p>
+		<p>You will require <strong>{{fullFuelStops}}</strong> stop(s) taking full fuel.</p>
+	</div>
+
+	<div *ngIf="partialFuelStopAmount > 0 && fullFuelStops == 0" class="alert alert-success" role="alert">
+		<p>You will require 1 stop for <strong>{{partialFuelStopAmount}}</strong> units of fuel.</p>
+	</div>
+
+	<div *ngIf="partialFuelStopAmount > 0 && fullFuelStops > 0" class="alert alert-success" role="alert">
+		<p>You will require <strong>1</strong> additional stop for <strong>{{partialFuelStopAmount}}</strong> units of fuel.</p>
 	</div>
 
 	<div class="alert alert-danger" role="alert">
