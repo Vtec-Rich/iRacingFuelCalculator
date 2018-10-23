@@ -20,10 +20,8 @@ Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.
 
 Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
 
-## Roadmap
-
-- use grid css instead of bootstrap 
-- add more tests
-- Add in more detail around pit strategy.
+#Demo
 
 See a demo here - http://xvr-sim-racing.co.uk/xvr-fuel-calc/
+
+

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-lap',
@@ -14,9 +15,27 @@ export class LapComponent implements OnInit {
   tankLaps: string;
   show: boolean = false;
 
+  raceCalcForm: FormGroup;
+  raceLaps: FormControl;
+  maxFuel: FormControl;
+  lapTime: FormControl;
+  fuelUsage: FormControl;
+
   constructor() { }
 
-  ngOnInit() { }
+  ngOnInit() { 
+    this.raceLaps = new FormControl('raceLaps');
+    this.maxFuel = new FormControl('maxFuel');
+    this.lapTime = new FormControl('lapTime');
+    this.fuelUsage = new FormControl('fuelUsage');
+
+    this.raceCalcForm = new FormGroup({
+      raceLaps: this.raceLaps,
+      maxFuel: this.maxFuel,
+      lapTime: this.lapTime,
+      fuelUsage: this.fuelUsage
+    });
+  }
 
     CalculateFuel(form){
 

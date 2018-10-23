@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl } from '@angular/forms';
 
 @Component({
   selector: 'app-time',
@@ -14,11 +15,35 @@ export class TimeComponent implements OnInit {
   partialFuelStopAmount: number;
   show: boolean = false;
 
-  constructor() { }
+  raceCalcForm: FormGroup;
+  raceTime: FormControl;
+  maxFuel: FormControl;
+  lapTime: FormControl;
+  fuelUsage: FormControl;
 
-  ngOnInit() { }
+  constructor() {
+    this.lapAmount = 0;
+  }
+
+  ngOnInit() { 
+    this.raceTime = new FormControl('raceTime');
+    this.maxFuel = new FormControl('maxFuel');
+    this.lapTime = new FormControl('lapTime');
+    this.fuelUsage = new FormControl('fuelUsage');
+
+    this.raceCalcForm = new FormGroup({
+      raceTime: this.raceTime,
+      maxFuel: this.maxFuel,
+      lapTime: this.lapTime,
+      fuelUsage: this.fuelUsage
+    });
+  }
 
   CalculateFuel(form){
+
+    console.log(this.show);
+
+    console.log(form);
 
     // var declarations
     let raceSeconds = form.value.raceTime * 60;
