@@ -41,10 +41,6 @@ export class TimeComponent implements OnInit {
 
   CalculateFuel(form){
 
-    console.log(this.show);
-
-    console.log(form);
-
     // var declarations
     let raceSeconds = form.value.raceTime * 60;
     let splitted = form.value.lapTime.split(":"); 
